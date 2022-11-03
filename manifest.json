@@ -3,6 +3,9 @@
   "name": "Slowly, Chicken",
   "version": "0.0.0",
   "description": "Chicken, but slowly.",
+  "icons": {
+    "128": "./assets/logo.png"
+  },
   "content_scripts": [
     {
       "matches": ["*://*/"],

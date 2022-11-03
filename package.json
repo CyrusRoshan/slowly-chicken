@@ -4,7 +4,7 @@
   "description": "Chicken, but slowly.",
   "private": true,
   "scripts": {
-    "build": "rm -r dist; tsc --build && cp manifest.json ./dist",
+    "build": "rm -r dist; tsc --build && cp manifest.json ./dist && cp -r ./assets ./dist",
     "dev": "nodemon --watch ./src --ext ts --exec yarn build"
   },
   "author": "Cyrus Roshan",
