@@ -3,30 +3,49 @@ const timings = {
   CHICKEN_AFTER_INACTIVE: 5 * 60 * 1000,
 }
 
-setInterval(chicken, timings.CHICKEN_HOW_OFTEN)
+function measurePerformance(fn: () => void) {
+  const start = performance.now();
+  fn()
+  const end = performance.now();
+  console.log('Took', end - start, 'ms')
+}
+
+setInterval(chickenWhenHidden, timings.CHICKEN_HOW_OFTEN)
 
 const DEBUG = false;
 if (!DEBUG) {
   for (const key in console) {
-    console[key] = () => {}
+    console[key] = () => { }
   }
 }
 
 const wordRegexp = new RegExp(/[a-z@](?:\S|\w)+/gi)
 const chickenRegexp = new RegExp(/chicken/i)
 
-let runs = 0;
 let nextOkayInterval: number | undefined;
-function chicken() {
-  if (document.visibilityState !== 'hidden') {
+function chickenWhenHidden() {
+  if (document.visibilityState === 'visible') {
     nextOkayInterval = undefined;
     return;
   }
 
   if (!nextOkayInterval) {
     nextOkayInterval = Date.now() + timings.CHICKEN_AFTER_INACTIVE
+    console.log('Set delay', timings.CHICKEN_AFTER_INACTIVE)
+    return
+  } else {
+    const diff = nextOkayInterval - Date.now()
+    if (diff > 0) {
+      console.log('Wait', diff)
+      return
+    }
   }
-  
+
+  measurePerformance(chicken)
+}
+
+let runs = 0;
+function chicken() {
   const totalWordsToChange = getTotalWordsToChange(document.body.innerText)
   console.log(`runs: ${runs++}, total words left to change: ${totalWordsToChange}`)
   if (!totalWordsToChange) {
