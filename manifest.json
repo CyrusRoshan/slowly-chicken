@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Slowly, Chicken",
   "version": "0.0.1",
-  "description": "Chicken, but slowly.",
+  "description": "Slowly chickens your websites over time.",
   "icons": {
     "128": "./assets/logo_128.png"
   },
