@@ -19,7 +19,7 @@ if (!DEBUG) {
   }
 }
 
-const wordRegexp = new RegExp(/[a-z@](?:\S|\w){2}(?:\S|\w)+/gi) // 4 letter words and up
+const wordRegexp = new RegExp(/[a-z@]\S{2}\S*\w/gi) // 4 letter words and up
 const chickenRegexp = new RegExp(/chicken/i)
 
 let nextOkayInterval: number | undefined;
