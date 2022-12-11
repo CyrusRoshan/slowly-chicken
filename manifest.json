@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Slowly, Chicken",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Slowly chickens your websites over time.",
   "icons": {
     "128": "./assets/logo_128.png"
@@ -9,7 +9,7 @@
   "content_scripts": [
     {
       "matches": ["*://*/", "<all_urls>"],
-      "js": ["chicken.js"],
+      "js": ["main.js"],
       "all_frames": true,
       "run_at": "document_idle"
     }
